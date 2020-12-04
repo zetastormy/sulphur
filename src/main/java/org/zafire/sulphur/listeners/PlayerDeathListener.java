@@ -30,6 +30,11 @@ public class PlayerDeathListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerDeath(final PlayerDeathEvent event) {
         Player player = event.getEntity().getPlayer();
+        takeExperience(event, player);
+        takeMoney(event, player);
+    }
+
+    private void takeExperience(PlayerDeathEvent event, Player player) {
         Map<UUID, Integer> playerExperienceCache = cacheHandler.getPlayerExperienceCacheMap();
 
         if (player.hasPermission("sulphur.zafire")) {
@@ -37,7 +42,6 @@ public class PlayerDeathListener implements Listener {
             playerExperienceCache.put(player.getUniqueId(), (int) Math.floor(player.getTotalExperience() * 0.75));
         }
         
-
         if (player.hasPermission("sulphur.arcane")) {
             event.setDroppedExp(0);
             playerExperienceCache.put(player.getUniqueId(), (int) Math.floor(player.getTotalExperience() * 0.50));
@@ -47,7 +51,9 @@ public class PlayerDeathListener implements Listener {
             event.setDroppedExp(0);
             playerExperienceCache.put(player.getUniqueId(), (int) Math.floor(player.getTotalExperience() * 0.35));
         }
+    }
 
+    private void takeMoney(PlayerDeathEvent event, Player player) {
         if (player.getKiller() != null && player.getKiller() != player && player.getKiller() instanceof Player) {
             double totalLostPvp = economyUtils.getMoneyLost("50", player);
             String moneyFormatted = economy.format(totalLostPvp);

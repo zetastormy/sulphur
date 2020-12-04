@@ -4,7 +4,7 @@ main: org.zafire.sulphur.SulphurPlugin
 api: 1.8.8
 author: ZetaStormy
 description: Provides a powerful core for Survival server of ZafireNT.
-depend: [PlaceholderAPI, Boss, Vault]
+depend: [PlaceholderAPI, Boss, Vault, NBTAPI, HamsterAPI]
 
 commands:
   Lobby:
@@ -20,6 +20,9 @@ commands:
     aliases: []
     description: A command to get the discord of LiteriumNT.    
   Boss:
-    usage: /<command>
+    usage: /<command> time
     aliases: [jefe]
     description: A command to get the time left for the boss.
+  Sulphur:
+    usage: /<command>
+    description: Main command of the Sulphur core.

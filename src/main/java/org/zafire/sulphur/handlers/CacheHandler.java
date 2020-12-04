@@ -23,6 +23,19 @@ public class CacheHandler {
     private List<UUID> playerConnectionCacheList = new ArrayList<UUID>();
 
     /**
+     * The boss damage cache is a {@link HashMap} that is
+     * used to save the damage that a user dealt to a boss
+     * in the {@link EntityDamageByEntityEvent}.
+     */
+    private Map<UUID, Double> bossDamageCacheMap = new HashMap<UUID, Double>();
+
+    /**
+     * The player experience cache is a {@link HashMap} that is
+     * used to save the experience that a has in {@link PlayerDeathEvent}.
+     */
+    private Map<UUID, Integer> playerExperienceCacheMap = new HashMap<UUID, Integer>();
+
+    /**
      * It receives and {@link UUID} object to
      * add the player UUID to the cache.
      * @param uuid - UUID of the player.
@@ -47,19 +60,8 @@ public class CacheHandler {
      * @return True, if the player is in cache and false, if the player isn't in the cache.
      */
     public boolean isConnectionCached(UUID uuid) {
-        if (playerConnectionCacheList.contains(uuid)) {
-            return true;
-        } else {
-            return false;
-        }
+        return playerConnectionCacheList.contains(uuid);
     }
-
-    /**
-     * The boss damage cache is a {@link HashMap} that is
-     * used to save the damage that a user dealt to a boss
-     * in the {@link EntityDamageByEntityEvent}.
-     */
-    private Map<UUID, Double> bossDamageCacheMap = new HashMap<UUID, Double>();
 
     /**
      * Get the damage cache map.
@@ -106,13 +108,6 @@ public class CacheHandler {
 
         return percentageMap;
     }
-
-
-    /**
-     * The player experience cache is a {@link HashMap} that is
-     * used to save the experience that a has in {@link PlayerDeathEvent}.
-     */
-    private Map<UUID, Integer> playerExperienceCacheMap = new HashMap<UUID, Integer>();
 
     /**
      * Get the experience cache map object.

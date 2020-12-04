@@ -10,6 +10,7 @@ import org.zafire.sulphur.commands.BossCommand;
 import org.zafire.sulphur.commands.DiscordCommand;
 import org.zafire.sulphur.commands.LobbyCommand;
 import org.zafire.sulphur.commands.StoreCommand;
+import org.zafire.sulphur.commands.SulphurCommand;
 import org.zafire.sulphur.listeners.BossDeathListener;
 import org.zafire.sulphur.listeners.BossPostSpawnListener;
 import org.zafire.sulphur.listeners.EntityDamageByEntityListener;
@@ -86,6 +87,7 @@ public class SulphurPlugin extends JavaPlugin {
             getCommand("lobby").setExecutor(new LobbyCommand(cacheHandler, plugin, messageUtils));
             getCommand("discord").setExecutor(new DiscordCommand(messageUtils));
             getCommand("boss").setExecutor(new BossCommand(messageUtils, plugin));
+            getCommand("sulphur").setExecutor(new SulphurCommand(messageUtils));
         }
     }
 

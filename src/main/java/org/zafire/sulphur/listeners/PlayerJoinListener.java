@@ -28,7 +28,7 @@ public class PlayerJoinListener implements Listener {
             playerExperienceCache.remove(player.getUniqueId());
         }
 
-        if ((player.hasPlayedBefore() && !(player.hasPermission("sulphur.donator"))) || player == null || player.hasPermission("sulphur.staff")) {
+        if (player == null || (player.hasPlayedBefore() && !(player.hasPermission("sulphur.donator"))) || player.hasPermission("sulphur.staff")) {
             event.setJoinMessage(null);
             return;
         }

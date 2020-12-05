@@ -28,6 +28,7 @@ public class BossSpawnTask {
     new BukkitRunnable() {
       @Override
       public void run() {
+        lastSpawnTime = System.currentTimeMillis();
         final Collection<SpawnedBoss> spawnedBosses = BossAPI.getBosses(plugin.getServer().getWorld("InfernalDungeon"));
         final Boss witherInfernalBoss = BossAPI.getBoss("WitherInfernal");
         final Boss guardianRealBoss = BossAPI.getBoss("GuardianReal");
@@ -46,8 +47,8 @@ public class BossSpawnTask {
             guardianRealBoss.spawn(spawnLocation, BossSpawnReason.CUSTOM);
             witherInfernalBoss.spawn(spawnLocation, BossSpawnReason.CUSTOM);
           }
-
-          lastSpawnTime = System.currentTimeMillis();
+        } else {
+          throw new NullPointerException("witherInfernalBossObject is null!");
         }
       }
     }.runTaskTimer(plugin, 0L, ticks);

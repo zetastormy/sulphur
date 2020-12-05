@@ -18,6 +18,7 @@ import org.zafire.sulphur.listeners.InventoryClickListener;
 import org.zafire.sulphur.listeners.PlayerDeathListener;
 import org.zafire.sulphur.listeners.PlayerDropItemListener;
 import org.zafire.sulphur.listeners.PlayerInteractListener;
+import org.zafire.sulphur.listeners.PlayerItemHeldListener;
 import org.zafire.sulphur.listeners.PlayerJoinListener;
 import org.zafire.sulphur.listeners.PlayerKickListener;
 import org.zafire.sulphur.listeners.PlayerQuitListener;
@@ -74,6 +75,7 @@ public class SulphurPlugin extends JavaPlugin {
             pluginManager.registerEvents(new PlayerDeathListener(messageUtils, economyUtils, economy, cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerDropItemListener(cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerInteractListener(cacheHandler), plugin);
+            pluginManager.registerEvents(new PlayerItemHeldListener(plugin), plugin);
             pluginManager.registerEvents(new PlayerJoinListener(messageUtils, cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerKickListener(), plugin);
             pluginManager.registerEvents(new PlayerQuitListener(cacheHandler), plugin);
@@ -114,6 +116,12 @@ public class SulphurPlugin extends JavaPlugin {
     
             if (pluginManager.getPlugin("Boss") == null) {
                 getLogger().severe("Could not find Boss, the plugin will disable!");
+                pluginManager.disablePlugin(plugin);
+                return;
+            }
+
+            if (pluginManager.getPlugin("NBTAPI") == null) {
+                getLogger().severe("Could not find NBTAPI, the plugin will disable!");
                 pluginManager.disablePlugin(plugin);
                 return;
             }

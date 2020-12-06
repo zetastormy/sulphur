@@ -10,8 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.zafire.sulphur.utils.MessageUtils;
 
-import de.tr7zw.nbtapi.NBTItem;
-
 public class SulphurCommand implements CommandExecutor {
     private final MessageUtils messageUtils;
 
@@ -29,10 +27,7 @@ public class SulphurCommand implements CommandExecutor {
         if (args.length > 0 && !args[0].equalsIgnoreCase("help")) {
             switch (args[0]) {
                 case "getitem":
-                NBTItem paloVomitivoNbt = new NBTItem(new ItemStack(Material.STICK));
-                paloVomitivoNbt.setBoolean("PaloVomitivo", true);
-
-                ItemStack paloVomitivoItem = paloVomitivoNbt.getItem();
+                ItemStack paloVomitivoItem = new ItemStack(Material.STICK);
                 ItemMeta paloVomitivoMeta = paloVomitivoItem.getItemMeta();
 
                 paloVomitivoMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&2Palo Vomitivo"));

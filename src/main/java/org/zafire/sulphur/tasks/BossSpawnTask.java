@@ -47,8 +47,6 @@ public class BossSpawnTask {
             guardianRealBoss.spawn(spawnLocation, BossSpawnReason.CUSTOM);
             witherInfernalBoss.spawn(spawnLocation, BossSpawnReason.CUSTOM);
           }
-        } else {
-          throw new NullPointerException("witherInfernalBossObject is null!");
         }
       }
     }.runTaskTimer(plugin, 0L, ticks);

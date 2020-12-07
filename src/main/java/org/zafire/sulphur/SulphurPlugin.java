@@ -47,7 +47,7 @@ public class SulphurPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        server = plugin.getServer();
+        server = getServer();
         pluginManager = server.getPluginManager();
         bukkitScheduler = server.getScheduler();
         registerHooks();

@@ -28,7 +28,7 @@ public class PlayerItemHeldListener implements Listener {
                 Player player = event.getPlayer();
                 ItemStack handItem = player.getItemInHand();
 
-                if (handItem.getType() == Material.STICK && handItem.getItemMeta().getDisplayName().equals("&2Palo Vomitivo")) {
+                if (handItem.getType() == Material.STICK && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, Integer.MAX_VALUE, 100, true, false));
                     HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle("&c&lOh no", "¡Ten cuidado con caerte!", 3, 5, 3);
                 }

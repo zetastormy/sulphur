@@ -33,6 +33,6 @@ public class PlayerItemHeldListener implements Listener {
                     HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle("&c&lOh no", "¡Ten cuidado con caerte!", 3, 5, 3);
                 }
             }
-        }.runTaskLaterAsynchronously(plugin, 20L);
+        }.runTaskLater(plugin, 20L);
     }
 }

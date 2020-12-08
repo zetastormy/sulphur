@@ -36,11 +36,15 @@ public class PlayerItemHeldListener implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 100, true, false));
+                            if (handItem.getType() == Material.STICK && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 100, true, false));
+                            }
                         }
-                    }.runTaskTimer(plugin, 0L, 150);
+                    }.runTaskTimer(plugin, 0L, 100);
+                } else {
+                    
                 }
             }
-        }.runTaskLater(plugin, 20L);
+        }.runTaskLater(plugin, 1L);
     }
 }

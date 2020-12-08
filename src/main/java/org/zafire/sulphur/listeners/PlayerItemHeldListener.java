@@ -41,8 +41,6 @@ public class PlayerItemHeldListener implements Listener {
                             }
                         }
                     }.runTaskTimer(plugin, 0L, 100);
-                } else {
-                    
                 }
             }
         }.runTaskLater(plugin, 1L);

@@ -75,7 +75,7 @@ public class SulphurPlugin extends JavaPlugin {
             pluginManager.registerEvents(new PlayerDeathListener(messageUtils, economyUtils, economy, cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerDropItemListener(cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerInteractListener(cacheHandler), plugin);
-            pluginManager.registerEvents(new PlayerItemHeldListener(plugin), plugin);
+            pluginManager.registerEvents(new PlayerItemHeldListener(plugin, messageUtils), plugin);
             pluginManager.registerEvents(new PlayerJoinListener(messageUtils, cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerKickListener(), plugin);
             pluginManager.registerEvents(new PlayerQuitListener(cacheHandler), plugin);

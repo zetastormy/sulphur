@@ -28,17 +28,21 @@ public class PlayerJoinListener implements Listener {
             playerExperienceCache.remove(player.getUniqueId());
         }
 
-        if (player == null || (player.hasPlayedBefore() && !(player.hasPermission("sulphur.donator"))) || player.hasPermission("sulphur.staff")) {
+        if (player == null || (player.hasPlayedBefore() && !(player.hasPermission("sulphur.donator")))
+                || player.hasPermission("sulphur.staff")) {
             event.setJoinMessage(null);
             return;
         }
 
         if (!player.hasPlayedBefore() && !player.hasPermission("sulphur.donator")) {
-            event.setJoinMessage(messageUtils.replaceManager("&5&lZafire &8|| &7El usuario &6" + player.getDisplayName() + " &7ha entrado por primera vez al servidor &8(&6#%server_unique_joins%&8)&7.", player));
+            event.setJoinMessage(messageUtils.replaceManager("&5&lZafire &8|| &7El usuario &6" + player.getDisplayName()
+                    + " &7ha entrado por primera vez al servidor &8(&6#%server_unique_joins%&8)&7.", player));
         }
 
         if (player.hasPermission("sulphur.donator") && player.hasPlayedBefore()) {
-            event.setJoinMessage(messageUtils.replaceManager("&5&lZafire &8|| &7El usuario &6" + player.getDisplayName() + " &7ha entrado al servidor.", player));
+            event.setJoinMessage(messageUtils.replaceManager(
+                    "&5&lZafire &8|| &7El usuario &6" + player.getDisplayName() + " &7ha entrado al servidor.",
+                    player));
         }
     }
 }

@@ -29,7 +29,7 @@ public class EconomyUtils {
             final double max = Double.parseDouble(parts[1]);
             return rand.nextDouble() * (max - min) + min;
         }
-        
+
         return Double.valueOf(path);
     }
 

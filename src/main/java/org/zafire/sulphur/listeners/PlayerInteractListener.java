@@ -14,8 +14,8 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(final PlayerInteractEvent event) {
-        if (cacheUtils.isConnectionCached(event.getPlayer().getUniqueId())){
+        if (cacheUtils.isConnectionCached(event.getPlayer().getUniqueId())) {
             event.setCancelled(true);
         }
     }
-}   
+}

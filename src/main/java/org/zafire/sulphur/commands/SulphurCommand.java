@@ -18,7 +18,7 @@ public class SulphurCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (!(sender instanceof Player) || !sender.hasPermission("sulphur.admin")) {
             messageUtils.sendMessage(sender, false, "&4&lError &8|| &7No tienes permisos para ejecutar este comando.");
             return true;
@@ -27,18 +27,18 @@ public class SulphurCommand implements CommandExecutor {
         if (args.length > 0 && !args[0].equalsIgnoreCase("help")) {
             switch (args[0]) {
                 case "getitem":
-                ItemStack paloVomitivoItem = new ItemStack(Material.STICK);
-                ItemMeta paloVomitivoMeta = paloVomitivoItem.getItemMeta();
+                    ItemStack paloVomitivoItem = new ItemStack(Material.STICK);
+                    ItemMeta paloVomitivoMeta = paloVomitivoItem.getItemMeta();
 
-                paloVomitivoMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&2Palo Vomitivo"));
-                paloVomitivoItem.setItemMeta(paloVomitivoMeta);
-                
-                ((Player) sender).getInventory().addItem(paloVomitivoItem);
-                return true;
+                    paloVomitivoMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&2Palo Vomitivo"));
+                    paloVomitivoItem.setItemMeta(paloVomitivoMeta);
+
+                    ((Player) sender).getInventory().addItem(paloVomitivoItem);
+                    return true;
 
                 default:
-                helpExecution(sender);
-                return true;
+                    helpExecution(sender);
+                    return true;
             }
         } else {
             helpExecution(sender);

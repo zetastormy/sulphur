@@ -13,14 +13,14 @@ import me.clip.placeholderapi.PlaceholderAPI;
 public class MessageUtils {
 
     private String replaceColors(final String string) {
-       return ChatColor.translateAlternateColorCodes('&', string);
+        return ChatColor.translateAlternateColorCodes('&', string);
     }
 
     public String replaceManager(final String string, final Player player) {
         String stringReplacement;
         stringReplacement = PlaceholderAPI.setPlaceholders(player, string);
         stringReplacement = replaceColors(stringReplacement);
-        
+
         return stringReplacement;
     }
 
@@ -42,7 +42,7 @@ public class MessageUtils {
         } else {
             player.sendMessage(replaceManager(message, player));
         }
-    }    
+    }
 
     public void broadcastMessage(final String message) {
         Bukkit.broadcastMessage(replaceColors(message));

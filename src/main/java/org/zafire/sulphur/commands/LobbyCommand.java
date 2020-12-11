@@ -24,7 +24,8 @@ public class LobbyCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
+    public boolean onCommand(final CommandSender sender, final Command command, final String label,
+            final String[] args) {
         if (sender instanceof Player) {
             final Player player = (Player) sender;
             cacheUtils.addConnectionCache(player.getUniqueId());
@@ -52,5 +53,5 @@ public class LobbyCommand implements CommandExecutor {
         }
         return false;
     }
-    
+
 }

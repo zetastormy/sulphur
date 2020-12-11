@@ -32,6 +32,7 @@ import net.milkbowl.vault.economy.Economy;
 
 /**
  * Represents the main class of the plugin.
+ * 
  * @author ZetaStormy
  */
 public class SulphurPlugin extends JavaPlugin {
@@ -68,11 +69,13 @@ public class SulphurPlugin extends JavaPlugin {
 
     private void registerListeners() {
         if (plugin != null) {
-            pluginManager.registerEvents(new BossDeathListener(cacheHandler, bukkitScheduler, plugin, messageUtils), plugin);
+            pluginManager.registerEvents(new BossDeathListener(cacheHandler, bukkitScheduler, plugin, messageUtils),
+                    plugin);
             pluginManager.registerEvents(new BossPostSpawnListener(messageUtils), plugin);
             pluginManager.registerEvents(new EntityDamageByEntityListener(cacheHandler), plugin);
             pluginManager.registerEvents(new InventoryClickListener(cacheHandler), plugin);
-            pluginManager.registerEvents(new PlayerDeathListener(messageUtils, economyUtils, economy, cacheHandler), plugin);
+            pluginManager.registerEvents(new PlayerDeathListener(messageUtils, economyUtils, economy, cacheHandler),
+                    plugin);
             pluginManager.registerEvents(new PlayerDropItemListener(cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerInteractListener(cacheHandler), plugin);
             pluginManager.registerEvents(new PlayerItemHeldListener(plugin, messageUtils), plugin);
@@ -82,7 +85,7 @@ public class SulphurPlugin extends JavaPlugin {
             pluginManager.registerEvents(new PlayerRespawnListener(cacheHandler, plugin), plugin);
         }
     }
-    
+
     private void registerCommands() {
         if (plugin != null) {
             getCommand("store").setExecutor(new StoreCommand(messageUtils));
@@ -100,20 +103,21 @@ public class SulphurPlugin extends JavaPlugin {
                 pluginManager.disablePlugin(plugin);
                 return;
             }
-    
+
             if (pluginManager.getPlugin("Vault") == null) {
                 getLogger().severe("Could not find Vault, the plugin will disable!");
                 pluginManager.disablePlugin(plugin);
                 return;
             } else {
-                RegisteredServiceProvider<Economy> registeredServiceProvider = server.getServicesManager().getRegistration(Economy.class);
+                RegisteredServiceProvider<Economy> registeredServiceProvider = server.getServicesManager()
+                        .getRegistration(Economy.class);
                 if (registeredServiceProvider == null) {
                     getLogger().severe("Could not register Economy service provider, the plugin will disable!");
                 } else {
                     economy = registeredServiceProvider.getProvider();
                 }
             }
-    
+
             if (pluginManager.getPlugin("Boss") == null) {
                 getLogger().severe("Could not find Boss, the plugin will disable!");
                 pluginManager.disablePlugin(plugin);

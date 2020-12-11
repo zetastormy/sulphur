@@ -18,8 +18,8 @@ public class PlayerQuitListener implements Listener {
             return;
         }
 
-        if (cacheUtils.isConnectionCached(event.getPlayer().getUniqueId())){
+        if (cacheUtils.isConnectionCached(event.getPlayer().getUniqueId())) {
             cacheUtils.removeConnectionCache(event.getPlayer().getUniqueId());
         }
     }
-}   
+}

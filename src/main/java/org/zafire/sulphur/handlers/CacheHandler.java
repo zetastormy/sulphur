@@ -11,33 +11,31 @@ import java.util.stream.Collectors;
 
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-/** 
- * Handle the cache of the plugin. 
+/**
+ * Handle the cache of the plugin.
  */
 public class CacheHandler {
     /**
-     * The player connection cache is a {@link ArrayList} that is 
-     * used to prevent object duplication when the user
-     * is being sent to another server.
+     * The player connection cache is a {@link ArrayList} that is used to prevent
+     * object duplication when the user is being sent to another server.
      */
     private List<UUID> playerConnectionCacheList = new ArrayList<UUID>();
 
     /**
-     * The boss damage cache is a {@link HashMap} that is
-     * used to save the damage that a user dealt to a boss
-     * in the {@link EntityDamageByEntityEvent}.
+     * The boss damage cache is a {@link HashMap} that is used to save the damage
+     * that a user dealt to a boss in the {@link EntityDamageByEntityEvent}.
      */
     private Map<UUID, Double> bossDamageCacheMap = new HashMap<UUID, Double>();
 
     /**
-     * The player experience cache is a {@link HashMap} that is
-     * used to save the experience that a has in {@link PlayerDeathEvent}.
+     * The player experience cache is a {@link HashMap} that is used to save the
+     * experience that a has in {@link PlayerDeathEvent}.
      */
     private Map<UUID, Integer> playerExperienceCacheMap = new HashMap<UUID, Integer>();
 
     /**
-     * It receives and {@link UUID} object to
-     * add the player UUID to the cache.
+     * It receives and {@link UUID} object to add the player UUID to the cache.
+     * 
      * @param uuid - UUID of the player.
      */
     public void addConnectionCache(UUID uuid) {
@@ -45,8 +43,8 @@ public class CacheHandler {
     }
 
     /**
-     * It receives and {@link UUID} object to
-     * remove the player UUID from the cache.
+     * It receives and {@link UUID} object to remove the player UUID from the cache.
+     * 
      * @param uuid - UUID of the player.
      */
     public void removeConnectionCache(UUID uuid) {
@@ -54,10 +52,12 @@ public class CacheHandler {
     }
 
     /**
-     * It receives and {@link UUID} object to
-     * check if the player UUID is in the cache.
+     * It receives and {@link UUID} object to check if the player UUID is in the
+     * cache.
+     * 
      * @param uuid - UUID of the player.
-     * @return True, if the player is in cache and false, if the player isn't in the cache.
+     * @return True, if the player is in cache and false, if the player isn't in the
+     *         cache.
      */
     public boolean isConnectionCached(UUID uuid) {
         return playerConnectionCacheList.contains(uuid);
@@ -65,7 +65,9 @@ public class CacheHandler {
 
     /**
      * Get the damage cache map.
-     * @return The damage cache map with {@link UUID} as key and {@link Double} as value.
+     * 
+     * @return The damage cache map with {@link UUID} as key and {@link Double} as
+     *         value.
      */
     public Map<UUID, Double> getDamageCacheMap() {
         return bossDamageCacheMap;
@@ -73,19 +75,22 @@ public class CacheHandler {
 
     /**
      * Get a sorted damage cache map.
+     * 
      * @return A sorted map of the damage cache.
      */
     public Map<UUID, Double> getSortedDamageCacheMap() {
         Map<UUID, Double> sortedDamageCacheMap;
 
-        sortedDamageCacheMap = bossDamageCacheMap.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+        sortedDamageCacheMap = bossDamageCacheMap.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
         return sortedDamageCacheMap;
     }
 
     /**
      * Get a percentage map of the damage cache.
+     * 
      * @return A percentage map of the damage cache.
      */
     public Map<UUID, Double> getPercentageDamageCacheMap() {
@@ -93,13 +98,15 @@ public class CacheHandler {
         double totalDamage = 0.0;
 
         for (Double damage : bossDamageCacheMap.values()) {
-            if (damage != null) totalDamage += damage;
+            if (damage != null)
+                totalDamage += damage;
         }
 
         double onePercent = totalDamage / 100;
 
         bossDamageCacheMap.forEach((uuid, damage) -> {
-            if (uuid == null || damage == null) return;
+            if (uuid == null || damage == null)
+                return;
 
             double playerPercent = damage / onePercent;
 
@@ -111,6 +118,7 @@ public class CacheHandler {
 
     /**
      * Get the experience cache map object.
+     * 
      * @return A {@link HashMap} with the experience cache.
      */
     public Map<UUID, Integer> getPlayerExperienceCacheMap() {

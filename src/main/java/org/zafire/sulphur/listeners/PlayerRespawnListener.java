@@ -27,7 +27,7 @@ public class PlayerRespawnListener implements Listener {
         Player player = event.getPlayer();
 
         if (playerExperienceCache.containsKey(player.getUniqueId())) {
-            new BukkitRunnable(){
+            new BukkitRunnable() {
                 @Override
                 public void run() {
                     if (player != null) {

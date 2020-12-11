@@ -19,13 +19,14 @@ public class BossDeathListener implements Listener {
     private final SulphurPlugin plugin;
     private final MessageUtils messageUtils;
 
-    public BossDeathListener(final CacheHandler cacheHandler, final BukkitScheduler bukkitScheduler, final SulphurPlugin plugin, final MessageUtils messageUtils) {
+    public BossDeathListener(final CacheHandler cacheHandler, final BukkitScheduler bukkitScheduler,
+            final SulphurPlugin plugin, final MessageUtils messageUtils) {
         this.cacheHandler = cacheHandler;
         this.bukkitScheduler = bukkitScheduler;
         this.plugin = plugin;
         this.messageUtils = messageUtils;
     }
-    
+
     @EventHandler
     public void onBossDeath(final BossDeathEvent event) {
         if (!event.getBoss().getName().equals(BossAPI.getBoss("WitherInfernal").getName())) {
@@ -43,24 +44,31 @@ public class BossDeathListener implements Listener {
                 int currentEntry = 1;
 
                 for (Map.Entry<UUID, Double> entry : damageMap.entrySet()) {
-                    if (currentEntry >= 4) break;
+                    if (currentEntry >= 4)
+                        break;
                     String playerName = plugin.getServer().getOfflinePlayer(entry.getKey()).getName();
                     Double percentage = damagePercentageMap.getOrDefault(entry.getKey(), null);
                     percentage = percentage == null ? -1.0D : percentage;
 
                     switch (currentEntry) {
                         case 1:
-                        messageUtils.broadcastMessage("&8[&6#1&8] &c" + playerName + "&8- &e" + decimalFormat.format(entry.getValue()) + " &8(&e" + decimalFormat.format(percentage) + "%&8)");
-                        break;
+                            messageUtils.broadcastMessage(
+                                    "&8[&6#1&8] &c" + playerName + "&8- &e" + decimalFormat.format(entry.getValue())
+                                            + " &8(&e" + decimalFormat.format(percentage) + "%&8)");
+                            break;
                         case 2:
-                        messageUtils.broadcastMessage("&8[&e#2&8] &c" + playerName + "&8- &e" + decimalFormat.format(entry.getValue()) + " &8(&e" + decimalFormat.format(percentage) + "%&8)");
-                        break;
+                            messageUtils.broadcastMessage(
+                                    "&8[&e#2&8] &c" + playerName + "&8- &e" + decimalFormat.format(entry.getValue())
+                                            + " &8(&e" + decimalFormat.format(percentage) + "%&8)");
+                            break;
                         case 3:
-                        messageUtils.broadcastMessage("&8[&a#3&8] &c" + playerName + "&8- &e" + decimalFormat.format(entry.getValue()) + " &8(&e" + decimalFormat.format(percentage) + "%&8)");
-                        break;
+                            messageUtils.broadcastMessage(
+                                    "&8[&a#3&8] &c" + playerName + "&8- &e" + decimalFormat.format(entry.getValue())
+                                            + " &8(&e" + decimalFormat.format(percentage) + "%&8)");
+                            break;
                         default:
-                        plugin.getLogger().warning("Something really unexpected ocurred inside BossDeathListener!");
-                        break;
+                            plugin.getLogger().warning("Something really unexpected ocurred inside BossDeathListener!");
+                            break;
                     }
 
                     currentEntry++;

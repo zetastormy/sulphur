@@ -31,13 +31,17 @@ public class PlayerItemHeldListener implements Listener {
                 Player player = event.getPlayer();
                 ItemStack handItem = player.getItemInHand();
 
-                if (handItem.getType() == Material.STICK && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
-                    HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle(messageUtils.replaceManager("&c&lOh no", player), "¡Ten cuidado con caerte!", 3, 5, 3);
+                if (handItem.getType() == Material.STICK
+                        && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                    HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle(
+                            messageUtils.replaceManager("&c&lOh no", player), "¡Ten cuidado con caerte!", 3, 5, 3);
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            if (player.getItemInHand().getType() == Material.STICK && player.getItemInHand().getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 400, 100, true, false));
+                            if (player.getItemInHand().getType() == Material.STICK && player.getItemInHand()
+                                    .getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                                player.addPotionEffect(
+                                        new PotionEffect(PotionEffectType.CONFUSION, 400, 100, true, false));
                             } else {
                                 cancel();
                             }

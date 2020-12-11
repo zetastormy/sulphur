@@ -91,7 +91,7 @@ public class BossSpawnTask {
     } else {
       timeString = hours + "h " + minutes + "m " + seconds + "s";
     }
-    
+
     return timeString;
   }
 }

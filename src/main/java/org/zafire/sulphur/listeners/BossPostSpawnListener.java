@@ -19,7 +19,8 @@ public class BossPostSpawnListener implements Listener {
         final String bossName = event.getBoss().getName();
 
         if (bossSpawnReason == BossSpawnReason.CUSTOM && bossName.equalsIgnoreCase("WitherInfernal")) {
-            messageUtils.broadcastMessage("&6&lMazmorra &8|| &7¡Ha a aparecido el &cWither Infernal &7en la cueva de la mazmorra, sé el primero en matarlo para obtener recompensas!");
+            messageUtils.broadcastMessage(
+                    "&6&lMazmorra &8|| &7¡Ha a aparecido el &cWither Infernal &7en la cueva de la mazmorra, sé el primero en matarlo para obtener recompensas!");
         }
     }
 }

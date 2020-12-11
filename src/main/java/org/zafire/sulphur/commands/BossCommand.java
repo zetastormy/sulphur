@@ -23,10 +23,12 @@ public class BossCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
+    public boolean onCommand(final CommandSender sender, final Command command, final String label,
+            final String[] args) {
         if (sender instanceof Player) {
             if (args.length > 0 && args[0].equalsIgnoreCase("time")) {
-                final Collection<SpawnedBoss> spawnedBosses = BossAPI.getBosses(plugin.getServer().getWorld("InfernalDungeon"));
+                final Collection<SpawnedBoss> spawnedBosses = BossAPI
+                        .getBosses(plugin.getServer().getWorld("InfernalDungeon"));
                 final Boss witherInfernalBoss = BossAPI.getBoss("WitherInfernal");
                 boolean isBossSpawned = false;
 
@@ -37,10 +39,13 @@ public class BossCommand implements CommandExecutor {
                 }
 
                 if (isBossSpawned) {
-                    messageUtils.sendMessage(sender, false, "&4&lError &8|| &7El &cWither Infernal &7ya apareció en la mazmorra.");
+                    messageUtils.sendMessage(sender, false,
+                            "&4&lError &8|| &7El &cWither Infernal &7ya apareció en la mazmorra.");
                     return true;
                 } else {
-                    messageUtils.sendMessage(sender, false, "&2&lSurvival &8|| &7El &cWither Infernal &7aparecerá en &8[&a" + BossSpawnTask.getSpawnTime() + "&8]&7.");
+                    messageUtils.sendMessage(sender, false,
+                            "&2&lSurvival &8|| &7El &cWither Infernal &7aparecerá en &8[&a"
+                                    + BossSpawnTask.getSpawnTime() + "&8]&7.");
                     return true;
                 }
             } else {
@@ -50,5 +55,5 @@ public class BossCommand implements CommandExecutor {
         }
         return false;
     }
-    
+
 }

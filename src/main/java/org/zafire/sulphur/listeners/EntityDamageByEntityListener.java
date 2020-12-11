@@ -16,7 +16,7 @@ public class EntityDamageByEntityListener implements Listener {
     public EntityDamageByEntityListener(final CacheHandler cacheHandler) {
         this.cacheHandler = cacheHandler;
     }
-    
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onEntityDamageByEntity(final EntityDamageByEntityEvent event) {
         if (event.getEntity() == null || !(event.getDamager() instanceof Player)) {

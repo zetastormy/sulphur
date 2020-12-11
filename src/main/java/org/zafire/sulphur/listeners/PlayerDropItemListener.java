@@ -15,7 +15,7 @@ public class PlayerDropItemListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerDropItem(final PlayerDropItemEvent event) {
-        if (cacheUtils.isConnectionCached(event.getPlayer().getUniqueId())){
+        if (cacheUtils.isConnectionCached(event.getPlayer().getUniqueId())) {
             event.setCancelled(true);
         }
     }

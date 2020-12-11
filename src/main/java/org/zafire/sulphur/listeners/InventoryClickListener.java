@@ -14,7 +14,7 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(final InventoryClickEvent event) {
-        if (cacheUtils.isConnectionCached(event.getWhoClicked().getUniqueId())){
+        if (cacheUtils.isConnectionCached(event.getWhoClicked().getUniqueId())) {
             event.setCancelled(true);
         }
     }

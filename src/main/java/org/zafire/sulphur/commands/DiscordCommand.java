@@ -14,12 +14,13 @@ public class DiscordCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
+    public boolean onCommand(final CommandSender sender, final Command command, final String label,
+            final String[] args) {
         if (sender instanceof Player) {
             messageUtils.sendMessage(sender, true, "Puedes acceder a nuestro discord desde&8: &6discord.gg/bzFXHZj");
             return true;
         }
         return false;
     }
-    
+
 }

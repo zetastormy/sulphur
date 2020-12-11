@@ -3,7 +3,6 @@ package org.zafire.sulphur.listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-
 import org.zafire.sulphur.handlers.CacheHandler;
 
 public class PlayerInteractListener implements Listener {

@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.mineacademy.boss.api.Boss;
 import org.mineacademy.boss.api.BossAPI;
 import org.mineacademy.boss.api.SpawnedBoss;
-
 import org.zafire.sulphur.SulphurPlugin;
 import org.zafire.sulphur.tasks.BossSpawnTask;
 import org.zafire.sulphur.utils.MessageUtils;

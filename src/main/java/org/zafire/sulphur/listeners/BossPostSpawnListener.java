@@ -4,7 +4,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.mineacademy.boss.api.BossSpawnReason;
 import org.mineacademy.boss.api.event.BossPostSpawnEvent;
-
 import org.zafire.sulphur.utils.MessageUtils;
 
 public class BossPostSpawnListener implements Listener {

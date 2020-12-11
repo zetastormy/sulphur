@@ -5,12 +5,12 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
-
 import org.zafire.sulphur.commands.BossCommand;
 import org.zafire.sulphur.commands.DiscordCommand;
 import org.zafire.sulphur.commands.LobbyCommand;
 import org.zafire.sulphur.commands.StoreCommand;
 import org.zafire.sulphur.commands.SulphurCommand;
+import org.zafire.sulphur.handlers.CacheHandler;
 import org.zafire.sulphur.listeners.BossDeathListener;
 import org.zafire.sulphur.listeners.BossPostSpawnListener;
 import org.zafire.sulphur.listeners.EntityDamageByEntityListener;
@@ -27,7 +27,7 @@ import org.zafire.sulphur.tasks.AnnounceTask;
 import org.zafire.sulphur.tasks.BossSpawnTask;
 import org.zafire.sulphur.utils.EconomyUtils;
 import org.zafire.sulphur.utils.MessageUtils;
-import org.zafire.sulphur.handlers.CacheHandler;
+
 import net.milkbowl.vault.economy.Economy;
 
 /**

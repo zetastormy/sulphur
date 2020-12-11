@@ -9,7 +9,6 @@ import org.mineacademy.boss.api.Boss;
 import org.mineacademy.boss.api.BossAPI;
 import org.mineacademy.boss.api.BossSpawnReason;
 import org.mineacademy.boss.api.SpawnedBoss;
-
 import org.zafire.sulphur.SulphurPlugin;
 
 public class BossSpawnTask {

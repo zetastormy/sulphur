@@ -5,7 +5,6 @@ import java.util.Random;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
-
 import org.zafire.sulphur.SulphurPlugin;
 import org.zafire.sulphur.utils.MessageUtils;
 

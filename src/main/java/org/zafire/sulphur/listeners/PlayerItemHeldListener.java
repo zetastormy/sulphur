@@ -40,6 +40,7 @@ public class PlayerItemHeldListener implements Listener {
                         public void run() {
                             if (player.getItemInHand().getType() == Material.STICK && player.getItemInHand()
                                     .getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                                player.removePotionEffect(PotionEffectType.CONFUSION);
                                 player.addPotionEffect(
                                         new PotionEffect(PotionEffectType.CONFUSION, 450, 100, true, false));
                             } else {

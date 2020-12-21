@@ -7,9 +7,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.zafire.sulphur.commands.BossCommand;
 import org.zafire.sulphur.commands.DiscordCommand;
+import org.zafire.sulphur.commands.LinksCommand;
 import org.zafire.sulphur.commands.LobbyCommand;
 import org.zafire.sulphur.commands.StoreCommand;
 import org.zafire.sulphur.commands.SulphurCommand;
+import org.zafire.sulphur.commands.TwitterCommand;
+import org.zafire.sulphur.commands.WikiCommand;
 import org.zafire.sulphur.handlers.CacheHandler;
 import org.zafire.sulphur.listeners.BossDeathListener;
 import org.zafire.sulphur.listeners.BossPostSpawnListener;
@@ -88,11 +91,14 @@ public class SulphurPlugin extends JavaPlugin {
 
     private void registerCommands() {
         if (plugin != null) {
-            getCommand("store").setExecutor(new StoreCommand(messageUtils));
-            getCommand("lobby").setExecutor(new LobbyCommand(cacheHandler, plugin, messageUtils));
-            getCommand("discord").setExecutor(new DiscordCommand(messageUtils));
             getCommand("boss").setExecutor(new BossCommand(messageUtils, plugin));
+            getCommand("discord").setExecutor(new DiscordCommand(messageUtils));
+            getCommand("links").setExecutor(new LinksCommand(messageUtils));
+            getCommand("lobby").setExecutor(new LobbyCommand(cacheHandler, plugin, messageUtils));
+            getCommand("store").setExecutor(new StoreCommand(messageUtils));
             getCommand("sulphur").setExecutor(new SulphurCommand(messageUtils));
+            getCommand("twitter").setExecutor(new TwitterCommand(messageUtils));
+            getCommand("wiki").setExecutor(new WikiCommand(messageUtils));
         }
     }
 

@@ -44,14 +44,14 @@ public class AnnounceTask {
                             p.playSound(p.getLocation(), Sound.NOTE_PLING, 1, 0);
                         }
                         messageUtils.broadcastMessage(
-                                "&6&lAnuncio &8|| &7No te olvides de seguirnos en Twitter&8: &6@ZafireNT");
+                                "&6&lAnuncio &8|| &7No te olvides de seguirnos en Twitter&8: &6twitter.zafire.org");
                         break;
                     case 2:
                         for (Player p : plugin.getServer().getOnlinePlayers()) {
                             p.playSound(p.getLocation(), Sound.NOTE_PLING, 1, 0);
                         }
                         messageUtils.broadcastMessage(
-                                "&6&lAnuncio &8|| &7Únete a nuestra comunidad de Discord&8: &6discord.gg/bzFXHZj");
+                                "&6&lAnuncio &8|| &7Únete a nuestra comunidad de Discord&8: &6discord.zafire.org");
                         break;
                     case 3:
                         for (Player p : plugin.getServer().getOnlinePlayers()) {

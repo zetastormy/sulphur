@@ -6,10 +6,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.zafire.sulphur.utils.MessageUtils;
 
-public class DiscordCommand implements CommandExecutor {
+public class TwitterCommand implements CommandExecutor {
     private final MessageUtils messageUtils;
 
-    public DiscordCommand(final MessageUtils messageUtils) {
+    public TwitterCommand(final MessageUtils messageUtils) {
         this.messageUtils = messageUtils;
     }
 
@@ -17,7 +17,7 @@ public class DiscordCommand implements CommandExecutor {
     public boolean onCommand(final CommandSender sender, final Command command, final String label,
             final String[] args) {
         if (sender instanceof Player) {
-            messageUtils.sendMessage(sender, true, "Puedes unirte a la comunidad de discord desde&8: &6discord.zafire.org");
+            messageUtils.sendMessage(sender, true, "Puedes visitarnos en Twitter desde&8: &6twitter.zafire.org");
             return true;
         }
         return true;

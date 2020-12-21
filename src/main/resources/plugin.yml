@@ -7,22 +7,34 @@ description: Provides a powerful core for Survival server of ZafireNT.
 depend: [PlaceholderAPI, Boss, Vault, NBTAPI, HamsterAPI]
 
 commands:
-  Lobby:
-    usage: /<command>
-    aliases: [hub]
-    description: Travel to the lobby server of LiteriumNT.
-  Store:
-    usage: /<command>
-    aliases: [tienda]
-    description: A command to get the store of LiteriumNT.
-  Discord:
-    usage: /<command>
-    aliases: []
-    description: A command to get the discord of LiteriumNT.    
   Boss:
     usage: /<command> time
     aliases: [jefe]
     description: A command to get the time left for the boss.
+  Discord:
+    usage: /<command>
+    aliases: []
+    description: A command to get the Discord of ZafireNT.
+  Links:
+    usage: /<command>
+    aliases: [enlaces]
+    description: A command to get the links of ZafireNT.
+  Lobby:
+    usage: /<command>
+    aliases: [hub]
+    description: Travel to the lobby server of ZafireNT.
+  Store:
+    usage: /<command>
+    aliases: [tienda]
+    description: A command to get the store of ZafireNT.  
   Sulphur:
     usage: /<command>
     description: Main command of the Sulphur core.
+  Twitter:
+    usage: /<command>
+    aliases: []
+    description: A command to get the Twitter of ZafireNT.
+  Wiki:
+    usage: /<command>
+    aliases: []
+    description: A command to get the wiki of ZafireNT.

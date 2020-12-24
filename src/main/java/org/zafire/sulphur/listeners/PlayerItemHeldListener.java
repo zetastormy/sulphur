@@ -34,6 +34,11 @@ public class PlayerItemHeldListener implements Listener {
                 ItemStack handItem = player.getItemInHand();
                 HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
 
+                if (!player.isOnline() || !player.getItemInHand().hasItemMeta()) {
+                    cancel();
+                    return;
+                }
+
                 if (handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                     hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&lOh no", player),
                             "¡Ten cuidado con caerte!", 3, 5, 3);
@@ -58,7 +63,7 @@ public class PlayerItemHeldListener implements Listener {
                 }
 
                 if (handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
-                    hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&l¡Cuidado!", player),
+                    hamsterPlayer.sendTitle(messageUtils.replaceManager("&6&l¡Cuidado!", player),
                             "Podrías ir demasiado rápido.", 3, 5, 3);
                     new BukkitRunnable() {
                         @Override

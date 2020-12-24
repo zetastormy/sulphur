@@ -40,8 +40,9 @@ public class PlayerItemHeldListener implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            if (!player.isOnline()) {
+                            if (!player.isOnline() || !player.getItemInHand().hasItemMeta()) {
                                 cancel();
+                                return;
                             }
 
                             if (player.getItemInHand().getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
@@ -50,6 +51,7 @@ public class PlayerItemHeldListener implements Listener {
                             } else {
                                 player.removePotionEffect(PotionEffectType.CONFUSION);
                                 cancel();
+                                return;
                             }
                         }
                     }.runTaskTimer(plugin, 0L, 100);
@@ -61,8 +63,9 @@ public class PlayerItemHeldListener implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            if (!player.isOnline()) {
+                            if (!player.isOnline() || !player.getItemInHand().hasItemMeta()) {
                                 cancel();
+                                return;
                             }
 
                             if (player.getItemInHand().getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
@@ -74,6 +77,7 @@ public class PlayerItemHeldListener implements Listener {
                                 player.removePotionEffect(PotionEffectType.SPEED);
                                 player.removePotionEffect(PotionEffectType.JUMP);
                                 cancel();
+                                return;
                             }
                         }
                     }.runTaskTimer(plugin, 0L, 100);

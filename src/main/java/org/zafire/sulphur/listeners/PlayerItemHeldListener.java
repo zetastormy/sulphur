@@ -40,6 +40,10 @@ public class PlayerItemHeldListener implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
+                            if (!player.isOnline()) {
+                                cancel();
+                            }
+
                             if (player.getItemInHand().getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                                 player.removePotionEffect(PotionEffectType.CONFUSION);
                                 addEffect(PotionEffectType.CONFUSION, player, 100);
@@ -57,6 +61,10 @@ public class PlayerItemHeldListener implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
+                            if (!player.isOnline()) {
+                                cancel();
+                            }
+
                             if (player.getItemInHand().getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
                                 player.removePotionEffect(PotionEffectType.SPEED);
                                 player.removePotionEffect(PotionEffectType.JUMP);

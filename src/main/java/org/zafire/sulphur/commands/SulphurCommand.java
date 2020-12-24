@@ -1,5 +1,8 @@
 package org.zafire.sulphur.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -41,6 +44,10 @@ public class SulphurCommand implements CommandExecutor {
                     ItemMeta paloRapidinMeta = paloRapidinItem.getItemMeta();
 
                     paloRapidinMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6Palo Rapidín"));
+                    List<String> lore = new ArrayList<String>();
+                    lore.add(ChatColor.translateAlternateColorCodes('&', "&8» &7Dueño&8: &5&lLogan_BR11"));
+
+                    paloRapidinMeta.setLore(lore);
                     paloRapidinItem.setItemMeta(paloRapidinMeta);
 
                     ((Player) sender).getInventory().addItem(paloRapidinItem);

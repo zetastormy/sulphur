@@ -6,7 +6,7 @@
 
     <groupId>org.zafire</groupId>
     <artifactId>Sulphur</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
 
     <properties>
         <!-- UTF-8 Encoding -->

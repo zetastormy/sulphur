@@ -74,7 +74,7 @@ public class PlayerItemHeldListener implements Listener {
         }.runTaskLater(plugin, 1L);
     }
 
-    private void addEffect(PotionEffectType effectType, Player player, int amplifier) {
-        player.addPotionEffect(new PotionEffect(effectType, 450, amplifier, true, false));
+    private boolean addEffect(PotionEffectType effectType, Player player, int amplifier) {
+        return player.addPotionEffect(new PotionEffect(effectType, 450, amplifier, true, false));
     }
 }

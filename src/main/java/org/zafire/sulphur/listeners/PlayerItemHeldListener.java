@@ -60,7 +60,7 @@ public class PlayerItemHeldListener implements Listener {
 
                 if (handItem.hasItemMeta() && handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
                     if (!player.getName().equals("Logan_BR11")) {
-                        addEffect(PotionEffectType.WITHER, player, 100);
+                        player.setHealth(0);
                         messageUtils.sendMessage(player, false, "&4&lError &8|| &7Tu cuerpo no es capaz de soportar tal poder, únicamente &cLogan_BR11 &7puede soportarlo.");
                     }
 

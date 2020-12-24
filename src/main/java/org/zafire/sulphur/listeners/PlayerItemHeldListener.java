@@ -63,8 +63,8 @@ public class PlayerItemHeldListener implements Listener {
                                     && player.getItemInHand().getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
                                 player.removePotionEffect(PotionEffectType.SPEED);
                                 player.removePotionEffect(PotionEffectType.JUMP);
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 450, 100, true, false));
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 450, 100, true, false));
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 450, 50, true, false));
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 450, 30, true, false));
                             } else {
                                 player.removePotionEffect(PotionEffectType.SPEED);
                                 player.removePotionEffect(PotionEffectType.JUMP);

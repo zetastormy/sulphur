@@ -1,6 +1,5 @@
 package org.zafire.sulphur.listeners;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,6 +12,7 @@ import org.zafire.sulphur.SulphurPlugin;
 import org.zafire.sulphur.utils.MessageUtils;
 
 import dev._2lstudios.hamsterapi.HamsterAPI;
+import dev._2lstudios.hamsterapi.hamsterplayer.HamsterPlayer;
 
 public class PlayerItemHeldListener implements Listener {
     private final SulphurPlugin plugin;
@@ -25,24 +25,24 @@ public class PlayerItemHeldListener implements Listener {
 
     @EventHandler
     public void onPlayerItemHeld(final PlayerItemHeldEvent event) {
+        final HamsterAPI hamsterInstance = HamsterAPI.getInstance();
+
         new BukkitRunnable() {
             @Override
             public void run() {
                 Player player = event.getPlayer();
                 ItemStack handItem = player.getItemInHand();
+                HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
 
-                if (handItem.getType() == Material.STICK
-                        && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
-                    HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle(
-                            messageUtils.replaceManager("&c&lOh no", player), "¡Ten cuidado con caerte!", 3, 5, 3);
+                if (handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                    hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&lOh no", player),
+                            "¡Ten cuidado con caerte!", 3, 5, 3);
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            if (player.getItemInHand().getType() == Material.STICK && player.getItemInHand()
-                                    .getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                            if (player.getItemInHand().getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                                 player.removePotionEffect(PotionEffectType.CONFUSION);
-                                player.addPotionEffect(
-                                        new PotionEffect(PotionEffectType.CONFUSION, 450, 100, true, false));
+                                addEffect(PotionEffectType.CONFUSION, player, 100);
                             } else {
                                 player.removePotionEffect(PotionEffectType.CONFUSION);
                                 cancel();
@@ -51,20 +51,17 @@ public class PlayerItemHeldListener implements Listener {
                     }.runTaskTimer(plugin, 0L, 100);
                 }
 
-                if (handItem.getType() == Material.STICK
-                        && handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
-                    HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle(
-                            messageUtils.replaceManager("&c&l¡Cuidado!", player), "Podrías ir demasiado rápido.", 3, 5,
-                            3);
+                if (handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
+                    hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&l¡Cuidado!", player),
+                            "Podrías ir demasiado rápido.", 3, 5, 3);
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            if (player.getItemInHand().getType() == Material.STICK
-                                    && player.getItemInHand().getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
+                            if (player.getItemInHand().getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
                                 player.removePotionEffect(PotionEffectType.SPEED);
                                 player.removePotionEffect(PotionEffectType.JUMP);
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 450, 50, true, false));
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 450, 30, true, false));
+                                addEffect(PotionEffectType.SPEED, player, 50);
+                                addEffect(PotionEffectType.JUMP, player, 30);
                             } else {
                                 player.removePotionEffect(PotionEffectType.SPEED);
                                 player.removePotionEffect(PotionEffectType.JUMP);
@@ -75,5 +72,9 @@ public class PlayerItemHeldListener implements Listener {
                 }
             }
         }.runTaskLater(plugin, 1L);
+    }
+
+    private void addEffect(PotionEffectType effectType, Player player, int amplifier) {
+        player.addPotionEffect(new PotionEffect(effectType, 450, amplifier, true, false));
     }
 }

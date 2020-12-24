@@ -37,7 +37,7 @@ public class SulphurCommand implements CommandExecutor {
                     return true;
 
                 case "logan":
-                    ItemStack paloRapidinItem = new ItemStack(Material.STICK);
+                    ItemStack paloRapidinItem = new ItemStack(Material.BLAZE_ROD);
                     ItemMeta paloRapidinMeta = paloRapidinItem.getItemMeta();
 
                     paloRapidinMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6Palo Rapidín"));

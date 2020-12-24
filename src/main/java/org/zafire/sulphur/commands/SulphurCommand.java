@@ -36,6 +36,16 @@ public class SulphurCommand implements CommandExecutor {
                     ((Player) sender).getInventory().addItem(paloVomitivoItem);
                     return true;
 
+                case "logan":
+                    ItemStack paloRapidinItem = new ItemStack(Material.STICK);
+                    ItemMeta paloRapidinMeta = paloRapidinItem.getItemMeta();
+
+                    paloRapidinMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6Palo Rapidín"));
+                    paloRapidinItem.setItemMeta(paloRapidinMeta);
+
+                    ((Player) sender).getInventory().addItem(paloRapidinItem);
+                    return true;                    
+
                 default:
                     helpExecution(sender);
                     return true;

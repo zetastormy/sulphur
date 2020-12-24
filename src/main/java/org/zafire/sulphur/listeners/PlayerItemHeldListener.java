@@ -44,6 +44,30 @@ public class PlayerItemHeldListener implements Listener {
                                 player.addPotionEffect(
                                         new PotionEffect(PotionEffectType.CONFUSION, 450, 100, true, false));
                             } else {
+                                player.removePotionEffect(PotionEffectType.CONFUSION);
+                                cancel();
+                            }
+                        }
+                    }.runTaskTimer(plugin, 0L, 100);
+                }
+
+                if (handItem.getType() == Material.STICK
+                        && handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
+                    HamsterAPI.getInstance().getHamsterPlayerManager().get(player).sendTitle(
+                            messageUtils.replaceManager("&c&l¡Cuidado!", player), "Podrías ir demasiado rápido.", 3, 5,
+                            3);
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            if (player.getItemInHand().getType() == Material.STICK
+                                    && player.getItemInHand().getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
+                                player.removePotionEffect(PotionEffectType.SPEED);
+                                player.removePotionEffect(PotionEffectType.JUMP);
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 450, 100, true, false));
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 450, 100, true, false));
+                            } else {
+                                player.removePotionEffect(PotionEffectType.SPEED);
+                                player.removePotionEffect(PotionEffectType.JUMP);
                                 cancel();
                             }
                         }

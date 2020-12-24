@@ -6,7 +6,7 @@
 
     <groupId>org.zafire</groupId>
     <artifactId>Sulphur</artifactId>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
 
     <properties>
         <!-- UTF-8 Encoding -->
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.mineacademy.plugin</groupId>
             <artifactId>Boss-API</artifactId>
-            <version>3.9.5</version>
+            <version>3.9.7</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/libs/Boss.jar</systemPath>
         </dependency>

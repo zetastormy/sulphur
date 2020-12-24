@@ -34,18 +34,14 @@ public class PlayerItemHeldListener implements Listener {
                 ItemStack handItem = player.getItemInHand();
                 HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
 
-                if (!player.isOnline() || !player.getItemInHand().hasItemMeta()) {
-                    cancel();
-                    return;
-                }
-
-                if (handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                if (handItem.hasItemMeta() && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                     hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&lOh no", player),
                             "¡Ten cuidado con caerte!", 3, 5, 3);
                     new BukkitRunnable() {
                         @Override
                         public void run() {
                             if (!player.isOnline() || !player.getItemInHand().hasItemMeta()) {
+                                player.removePotionEffect(PotionEffectType.CONFUSION);
                                 cancel();
                                 return;
                             }
@@ -62,13 +58,14 @@ public class PlayerItemHeldListener implements Listener {
                     }.runTaskTimer(plugin, 0L, 100);
                 }
 
-                if (handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
+                if (handItem.hasItemMeta() && handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
                     hamsterPlayer.sendTitle(messageUtils.replaceManager("&6&l¡Cuidado!", player),
                             "Podrías ir demasiado rápido.", 3, 5, 3);
                     new BukkitRunnable() {
                         @Override
                         public void run() {
                             if (!player.isOnline() || !player.getItemInHand().hasItemMeta()) {
+                                player.removePotionEffect(PotionEffectType.CONFUSION);
                                 cancel();
                                 return;
                             }

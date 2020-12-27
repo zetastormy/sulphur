@@ -25,18 +25,17 @@ public class PlayerItemHeldListener implements Listener {
 
     @EventHandler
     public void onPlayerItemHeld(final PlayerItemHeldEvent event) {
-        final HamsterAPI hamsterInstance = HamsterAPI.getInstance();
-        final Player player = event.getPlayer();
-        final HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
-        final ItemStack handItem = player.getItemInHand();
-
-        if (handItem == null || !handItem.hasItemMeta() || !handItem.getItemMeta().hasDisplayName()) {
-            return;
-        }
-
         new BukkitRunnable() {
             @Override
             public void run() {
+                final HamsterAPI hamsterInstance = HamsterAPI.getInstance();
+                final Player player = event.getPlayer();
+                final HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
+                final ItemStack handItem = player.getItemInHand();
+        
+                if (handItem == null || !handItem.hasItemMeta() || !handItem.getItemMeta().hasDisplayName()) {
+                    return;
+                }
 
                 if (handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                     hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&lOh no", player),

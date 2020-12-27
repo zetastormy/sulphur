@@ -30,7 +30,7 @@ public class PlayerItemHeldListener implements Listener {
         final HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
         final ItemStack handItem = player.getItemInHand();
 
-        if (handItem == null || !handItem.hasItemMeta()) {
+        if (handItem == null || !handItem.hasItemMeta() || handItem.getItemMeta().getDisplayName() == null) {
             return;
         }
 

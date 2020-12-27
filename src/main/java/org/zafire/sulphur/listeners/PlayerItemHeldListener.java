@@ -26,15 +26,19 @@ public class PlayerItemHeldListener implements Listener {
     @EventHandler
     public void onPlayerItemHeld(final PlayerItemHeldEvent event) {
         final HamsterAPI hamsterInstance = HamsterAPI.getInstance();
+        final Player player = event.getPlayer();
+        final HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
+        final ItemStack handItem = player.getItemInHand();
+
+        if (handItem == null || !handItem.hasItemMeta()) {
+            return;
+        }
 
         new BukkitRunnable() {
             @Override
             public void run() {
-                Player player = event.getPlayer();
-                ItemStack handItem = player.getItemInHand();
-                HamsterPlayer hamsterPlayer = hamsterInstance.getHamsterPlayerManager().get(player);
 
-                if (handItem.hasItemMeta() && handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
+                if (handItem.getItemMeta().getDisplayName().equals("§2Palo Vomitivo")) {
                     hamsterPlayer.sendTitle(messageUtils.replaceManager("&c&lOh no", player),
                             "¡Ten cuidado con caerte!", 3, 5, 3);
                     new BukkitRunnable() {
@@ -58,10 +62,11 @@ public class PlayerItemHeldListener implements Listener {
                     }.runTaskTimer(plugin, 0L, 100);
                 }
 
-                if (handItem.hasItemMeta() && handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
+                if (handItem.getItemMeta().getDisplayName().equals("§6Palo Rapidín")) {
                     if (!player.getName().equals("Logan_BR11")) {
                         player.setHealth(0);
-                        messageUtils.sendMessage(player, false, "&4&lError &8|| &7Tu cuerpo no es capaz de soportar tal poder, únicamente &cLogan_BR11 &7puede soportarlo.");
+                        messageUtils.sendMessage(player, false,
+                                "&4&lError &8|| &7Tu cuerpo no es capaz de soportar tal poder, únicamente &cLogan_BR11 &7puede soportarlo.");
                     }
 
                     hamsterPlayer.sendTitle(messageUtils.replaceManager("&6&l¡Cuidado!", player),
